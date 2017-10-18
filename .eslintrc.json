@@ -11,30 +11,13 @@
     },
     "sourceType": "module"
   },
-  "plugins": [
-    "react"
-  ],
+  "plugins": ["react", "prettier"],
   "rules": {
-    "indent": [
-      "error",
-      2
-    ],
-    "linebreak-style": [
-      "error",
-      "unix"
-    ],
-    "quotes": [
-      "error",
-      "single"
-    ],
-    "semi": [
-      "error",
-      "never"
-    ],
-    "object-curly-spacing" : [
-      "error",
-      "always"
-    ],
-    "react/prop-types" : 0
+    "prettier/prettier": ["error", { "semi": false, "singleQuote": true }],
+    "no-console": ["error", { "allow": ["warn", "error"] }],
+    "indent": ["error", 2],
+    "linebreak-style": ["error", "unix"],
+    "object-curly-spacing": ["error", "always"],
+    "react/prop-types": 0
   }
 }
