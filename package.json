@@ -1,5 +1,5 @@
 {
-  "name": "Billes",
+  "name": "@billes/components",
   "version": "1.0.0",
   "description": "Components in React",
   "main": "lib/index.js",
@@ -14,18 +14,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Billes/dropdown.git"
+    "url": "git+https://github.com/Billes/components.git"
   },
   "keywords": [
     "react",
-    "dropdown"
+    "components"
   ],
   "author": "Andrée Björkgård <andree.bjorkgard@billes.se>",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Billes/dropdown/issues"
+    "url": "https://github.com/Billes/components/issues"
   },
-  "homepage": "https://github.com/Billes/dropdown#readme",
+  "homepage": "https://github.com/Billes/components#readme",
   "dependencies": {
     "react": "^16.0.0"
   },
