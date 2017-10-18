@@ -3,3 +3,8 @@ node_modules
 coverage
 .nyc_output
 examples
+src
+.eslintrc.json
+.flowconfig
+.gitignore
+*.log

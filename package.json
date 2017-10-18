@@ -1,12 +1,13 @@
 {
-  "name": "bdropdown",
+  "name": "Billes",
   "version": "1.0.0",
-  "description": "Dropdown in react",
-  "main": "dist/index.js",
+  "description": "Components in React",
+  "main": "lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "babel src/ -d lib/",
-    "prepublish": "yarn run build"
+    "prepublish": "yarn run build",
+    "example": "cd example && yarn start"
   },
   "repository": {
     "type": "git",
@@ -42,6 +43,9 @@
       "env",
       "react",
       "flow"
+    ],
+    "plugins": [
+      ["transform-object-rest-spread", { "useBuiltIns": true }]
     ]
   }
 }
