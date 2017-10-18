@@ -1,0 +1,48 @@
+body {
+  font-family: "Quicksand", sans-serif;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+header {
+  box-sizing: border-box;
+  padding: 10px;
+  min-height: 50vh;
+  color: white;
+  text-align: center;
+}
+
+/* Flexbox */
+
+.flexbox {
+  background-color: #222;
+}
+
+.flexbox > div {
+  display: flex;
+}
+
+.flexbox > div.right {
+  justify-content: flex-end;
+}
+
+/* Inline-block items */
+
+.inlineBlock {
+  background-color: rgb(58, 58, 58);
+}
+
+.inlineBlock > div {
+  text-align: left;
+}
+
+.inlineBlock > div.right {
+  text-align: right;
+}
+
+.inlineBlock > div > div {
+  display: inline-block;
+}
