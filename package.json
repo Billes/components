@@ -6,6 +6,7 @@
   "scripts": {
     "preexample": "[ -d \"./node_modules\" ] || yarn install",
     "example": "webpack-dev-server --open",
+    "start": "yarn example",
     "build": "babel src/ -d lib/",
     "lint": "eslint src --fix",
     "prebuild": "yarn lint",
