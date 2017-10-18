@@ -1,10 +1,11 @@
 .#*
 node_modules
 coverage
-.nyc_output
-examples
+example
 src
+.nyc_output
 .eslintrc.json
 .flowconfig
 .gitignore
 *.log
+webpack.config.js
