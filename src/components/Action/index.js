@@ -1,4 +1,4 @@
-import React, { Component, cloneElement } from 'react'
+import React, { Component, createElement } from 'react'
 import s from './styles'
 
 const getIcon = icon => {
@@ -8,7 +8,7 @@ const getIcon = icon => {
     else {
       const image = findUnderlyingImage(icon)
       if (image) {
-        return image
+        return createElement(image.type, { style: s.img }, image.props.children)
       }
     }
   }
@@ -25,7 +25,7 @@ const findUnderlyingInChildrenRec = ([child, ...children]) => {
 const findUnderlyingImage = (icon = {}) => {
   if (icon.type === 'svg' || icon.type === 'img') {
     // If a display element is found
-    return cloneElement(icon, { style: s.img })
+    return icon
   } else if (typeof icon.type === 'string') {
     // if underlying is a dom-element
     return findUnderlyingInChildrenRec(
@@ -33,7 +33,7 @@ const findUnderlyingImage = (icon = {}) => {
     )
   } else if (!icon.type.prototype.render && typeof icon.type === 'function') {
     // if it is stateless
-    return findUnderlyingImage(icon.type()) // Calling types instantiates it so we can look for more
+    return findUnderlyingImage(icon.type(icon.props)) // Calling types instantiates it so we can look for more
   } else if (typeof icon.type !== 'string' && icon.type.prototype.render) {
     console.error(
       `Billes: Cannot read underlying implementation of ${icon.type
