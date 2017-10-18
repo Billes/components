@@ -23,7 +23,7 @@ export default {
     verticalAlign: 'middle',
     display: 'inline-block',
     whiteSpace: 'nowrap',
-
+    fill: 'currentColor',
     color: 'inherit !important',
     marginRight: 6,
     height: 24,
