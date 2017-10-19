@@ -33,7 +33,8 @@ module.exports = {
   resolve: {
     modules: ['node_modules'],
     alias: {
-      billes: path.resolve(__dirname, 'src')
+      src: path.resolve(__dirname, 'example/src'),
+      '@billes/components': path.resolve(__dirname, 'src')
     }
   },
   plugins: [

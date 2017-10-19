@@ -1,112 +1,80 @@
 import React, { Component } from 'react'
-import './App.css'
-import { Dropdown } from 'billes'
+import 'src/App.css'
+import { randomString } from 'src/utils'
+import Alerts from 'src/Alerts'
+import ActionExample from 'src/ActionExample'
+import DropdownExample from 'src/DropdownExample'
+import { NestedIconEdgeCase } from 'src/Icons/IconEdgeCase'
+import { Icon, NestedIcon2 } from 'src/Icons/Icon'
 
-const Icon = () => (
-  <svg>
-    <path d="M0 0h24v24H0z" fill="none" />
-    <path d="M11 17c0 .55.45 1 1 1s1-.45 1-1-.45-1-1-1-1 .45-1 1zm0-14v4h2V5.08c3.39.49 6 3.39 6 6.92 0 3.87-3.13 7-7 7s-7-3.13-7-7c0-1.68.59-3.22 1.58-4.42L12 13l1.41-1.41-6.8-6.8v.02C4.42 6.45 3 9.05 3 12c0 4.97 4.02 9 9 9 4.97 0 9-4.03 9-9s-4.03-9-9-9h-1zm7 9c0-.55-.45-1-1-1s-1 .45-1 1 .45 1 1 1 1-.45 1-1zM6 12c0 .55.45 1 1 1s1-.45 1-1-.45-1-1-1-1 .45-1 1z" />
-  </svg>
-)
-
-const IconEdgeCase = ({ children, viewBox = '0 2 28 28', disabled = false }) => {
-  return (
-    <svg
-      fill={disabled ? '#eee' : 'rgba(0,0,0,0.57)'}
-      style={{
-        display: 'block',
-        float: 'left',
-        width: 25,
-        height: 25
-      }}
-      viewBox={viewBox}
-    >
-      {children}
-    </svg>
-  )
-}
-
-const NestedIconEdgeCase = () => {
-  return (
-    <IconEdgeCase>
-      <path d="M0 0h24v24H0z" fill="none" />
-      <path d="M11 17c0 .55.45 1 1 1s1-.45 1-1-.45-1-1-1-1 .45-1 1zm0-14v4h2V5.08c3.39.49 6 3.39 6 6.92 0 3.87-3.13 7-7 7s-7-3.13-7-7c0-1.68.59-3.22 1.58-4.42L12 13l1.41-1.41-6.8-6.8v.02C4.42 6.45 3 9.05 3 12c0 4.97 4.02 9 9 9 4.97 0 9-4.03 9-9s-4.03-9-9-9h-1zm7 9c0-.55-.45-1-1-1s-1 .45-1 1 .45 1 1 1 1-.45 1-1zM6 12c0 .55.45 1 1 1s1-.45 1-1-.45-1-1-1-1 .45-1 1z" />
-    </IconEdgeCase>
-  )
-}
-
-const NestedIcon = () => <Icon />
-
-const NestedIcon2 = () => <NestedIcon />
-
-const props = {
+const props = action => ({
   items: [
     {
       name: 'Stateless Icon',
-      icon: <Icon />
+      icon: <Icon />,
+      action,
+      disabled: true
     },
     {
-      name: 'Stateless parent Icon',
-      icon: <NestedIcon2 />
+      name: 'Stateless Nested Icon',
+      icon: <NestedIcon2 />,
+      action
     },
     {
-      name: 'Stateless parent Icon',
-      icon: <NestedIconEdgeCase />
+      name: 'Stateless Nested Edgecase',
+      icon: <NestedIconEdgeCase />,
+      action
     }
   ],
   name: 'Dropdown'
-}
+})
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      alerts: {}
+    }
+  }
+
+  setOpacityOnAlert(id, opacity) {
+    this.setState(state => {
+      const alerts = { ...state.alerts }
+      alerts[id] = {
+        opacity: opacity
+      }
+      return { alerts: alerts }
+    })
+  }
+
+  triggerAlert() {
+    const id = randomString(8)
+    this.setOpacityOnAlert(id, 0)
+
+    // fade in
+    setTimeout(() => this.setOpacityOnAlert(id, 1), 10)
+    // fade out
+    setTimeout(() => this.setOpacityOnAlert(id, 0), 4000)
+    // remove
+    setTimeout(() => {
+      this.setState(state => {
+        const alerts = { ...state.alerts }
+        delete alerts[id]
+        return { alerts: alerts }
+      })
+    }, 5000)
+  }
+
   render() {
+    const { state } = this
+    const action = this.triggerAlert.bind(this)
+
     return (
       <div className="App">
-        <header className="flexbox">
-          <h1>With flexbox alignment</h1>
-          <h2>Multiple elements</h2>
-          <div>
-            <Dropdown {...props} />
-            <Dropdown {...props} />
-            <Dropdown {...props} />
-          </div>
-          <h2>Multiple elements, right justification</h2>
-          <div className="right">
-            <Dropdown {...props} />
-            <Dropdown {...props} />
-            <Dropdown {...props} />
-          </div>
-          <h2>Single element</h2>
-          <div>
-            <Dropdown {...props} />
-          </div>
-          <h2>Single element, right justification</h2>
-          <div className="right">
-            <Dropdown {...props} />
-          </div>
-        </header>
-        <header className="inlineBlock">
-          <h1>With inline-block alignment</h1>
-          <h2>Multiple elements</h2>
-          <div>
-            <Dropdown {...props} />
-            <Dropdown {...props} />
-            <Dropdown {...props} />
-          </div>
-          <h2>Multiple elements, right justification</h2>
-          <div className="right">
-            <Dropdown {...props} />
-            <Dropdown {...props} />
-            <Dropdown {...props} />
-          </div>
-          <h2>Single element</h2>
-          <div>
-            <Dropdown {...props} />
-          </div>
-          <h2>Single element, right justification</h2>
-          <div className="right">
-            <Dropdown {...props} />
-          </div>
-        </header>
+        <Alerts alerts={state.alerts} />
+        <ActionExample {...props(action)} />
+        <DropdownExample {...props(action)} />
       </div>
     )
   }

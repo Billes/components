@@ -18,7 +18,7 @@ header {
 /* Flexbox */
 
 .flexbox {
-  background-color: #222;
+  background-color: rgb(34, 34, 34);
 }
 
 .flexbox > div {
