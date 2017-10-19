@@ -49,12 +49,13 @@ class DropDown extends Component {
   }
 
   render() {
-    const { icon, name, items } = this.props
-    const { show } = this.state
+    const { props: { items }, state: { show } } = this
+    const props = { ...this.props }
+    delete props['items']
 
     return (
       <div tabIndex={0} style={s.dropdown} onBlur={this.hideList}>
-        <Item name={name} icon={icon} action={this.showList} />
+        <Item {...this.props} action={this.showList} />
         {show
           ? getList(this.state, items, this.hideList, this.alignDropdown)
           : null}
