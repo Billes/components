@@ -44,6 +44,18 @@ const findUnderlyingImage = (icon = {}) => {
   return false
 }
 
+const getText = (label, name) => {
+  if (label) return label
+  else if (name) {
+    console.warn(
+      '@Billes/components: Property "name" is deprecated. Please use "label" instead.'
+    )
+    return name
+  }
+
+  return ''
+}
+
 export default class Item extends Component {
   constructor(props) {
     super(props)
@@ -65,9 +77,9 @@ export default class Item extends Component {
       icon = null,
       link = null,
       name,
+      label,
       disabled = false
     } = this.props
-    // If not a string (image-reference), assume component
 
     const buttonStyle = {
       ...s.item,
@@ -85,7 +97,7 @@ export default class Item extends Component {
         onMouseLeave={this.unhovered}
       >
         {getIcon(icon)}
-        <span style={s.span}>{name}</span>
+        <span style={s.span}>{getText(label, name)}</span>
       </button>
     )
 
