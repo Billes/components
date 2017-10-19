@@ -10,23 +10,23 @@ import { Icon, NestedIcon2 } from 'src/Icons/Icon'
 const props = action => ({
   items: [
     {
-      name: 'Stateless Icon',
+      label: 'what?',
       icon: <Icon />,
       action,
       disabled: true
     },
     {
-      name: 'Stateless Nested Icon',
+      label: 'Stateless Nested Icon',
       icon: <NestedIcon2 />,
       action
     },
     {
-      name: 'Stateless Nested Edgecase',
+      label: 'Stateless Nested Edgecase',
       icon: <NestedIconEdgeCase />,
       action
     }
   ],
-  name: 'Dropdown'
+  label: 'Dropdown'
 })
 
 class App extends Component {

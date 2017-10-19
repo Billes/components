@@ -12,6 +12,8 @@ const DropdownExample = props => (
     </div>
     <h2>Multiple elements, right justification</h2>
     <div className="right">{dropdownViews(3, props)}</div>
+    <h2>Multiple disabled elements</h2>
+    <div>{dropdownViews(2, { ...props, disabled: true })}</div>
   </header>
 )
 
