@@ -36,7 +36,7 @@ const findUnderlyingImage = (icon = {}) => {
     return findUnderlyingImage(icon.type(icon.props)) // Calling types instantiates it so we can look for more
   } else if (typeof icon.type !== 'string' && icon.type.prototype.render) {
     console.error(
-      `Billes: Cannot read underlying implementation of ${icon.type
+      `@Billes/components: Cannot read underlying implementation of ${icon.type
         .name} because it is an instance of "React.Component". Please use stateless components instead.`
     )
   }
