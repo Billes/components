@@ -51,28 +51,35 @@ export default class Item extends Component {
       hover: false
     }
 
-    this.hovered = this.toggleHover.bind(this, true)
-    this.unhovered = this.toggleHover.bind(this, false)
+    this.hovered = this.setHover.bind(this)
+    this.unhovered = this.setHover.bind(this, false)
   }
 
-  toggleHover(isHovered) {
-    this.setState({ hover: isHovered })
+  setHover(isHovered) {
+    this.setState(() => ({ hover: isHovered }))
   }
 
   render() {
-    const { action, icon = null, link = null, name } = this.props
+    const {
+      action,
+      icon = null,
+      link = null,
+      name,
+      disabled = false
+    } = this.props
     // If not a string (image-reference), assume component
 
     const buttonStyle = {
       ...s.item,
-      ...(this.state.hover ? s.itemHover : {})
+      ...(this.state.hover && !disabled ? s.itemHover : {}),
+      ...(disabled ? s.disabled : {})
     }
 
     const item = (
       <button
         ref={el => (this.element = el)}
         href={link}
-        onClick={action ? () => action() : null}
+        onClick={action && !disabled ? () => action() : null}
         style={buttonStyle}
         onMouseEnter={this.hovered}
         onMouseLeave={this.unhovered}

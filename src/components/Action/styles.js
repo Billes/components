@@ -19,6 +19,9 @@ export default {
   itemHover: {
     background: '#E2E2E2'
   },
+  disabled: {
+    opacity: '0.4'
+  },
   img: {
     verticalAlign: 'middle',
     display: 'inline-block',
