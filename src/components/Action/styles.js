@@ -13,7 +13,8 @@ export default {
     whiteSpace: 'nowrap',
     height: 30,
     outline: 'none',
-    transition: 'all 100ms cubic-bezier(.55,0,.55,.2)'
+    transition: 'all 100ms cubic-bezier(.55,0,.55,.2)',
+    cursor: 'pointer'
   }),
   itemHover: {
     background: '#E2E2E2'
