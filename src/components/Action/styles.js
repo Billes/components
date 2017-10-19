@@ -1,5 +1,5 @@
 export default {
-  item: {
+  item: (width = 'auto') => ({
     boxSizing: 'border-box',
     background: '#fff',
     color: 'rgba(0,0,0,0.57)',
@@ -7,15 +7,14 @@ export default {
     fontSize: 12,
     fontWeight: '400',
     padding: '0px 16px',
-    minWidth: 'inherit',
+    width: width,
     textAlign: 'left',
     display: 'block',
     whiteSpace: 'nowrap',
     height: 30,
     outline: 'none',
-    overflow: 'hidden',
     transition: 'all 100ms cubic-bezier(.55,0,.55,.2)'
-  },
+  }),
   itemHover: {
     background: '#E2E2E2'
   },

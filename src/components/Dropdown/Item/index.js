@@ -25,6 +25,6 @@ export default class DropdownItem extends Component {
     const props = { ...this.props }
     delete props.alignDropdown
 
-    return <Item ref={el => (this.element = el)} {...this.props} />
+    return <Item ref={el => (this.element = el)} {...props} width={'100%'} />
   }
 }

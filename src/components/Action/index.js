@@ -78,11 +78,12 @@ export default class Item extends Component {
       link = null,
       name,
       label,
-      disabled = false
+      disabled = false,
+      width = 'auto'
     } = this.props
 
     const buttonStyle = {
-      ...s.item,
+      ...s.item(width),
       ...(this.state.hover && !disabled ? s.itemHover : {}),
       ...(disabled ? s.disabled : {})
     }
