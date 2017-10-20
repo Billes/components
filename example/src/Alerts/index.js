@@ -17,7 +17,7 @@ const alertView = (id, alert) => (
 
 const Alerts = ({ alerts }) => {
   return (
-    <div style={{ position: 'absolute', top: 5, left: 5 }}>
+    <div style={{ position: 'absolute', top: 5, right: 5 }}>
       {Object.entries(alerts).map(([id, alert]) => alertView(id, alert))}
     </div>
   )

@@ -1,3 +1,7 @@
+html, body {
+  height: 100%;
+}
+
 body {
   font-family: "Quicksand", sans-serif;
   margin: 0;
@@ -7,18 +11,22 @@ body {
   box-sizing: border-box;
 }
 
-header {
-  box-sizing: border-box;
-  padding: 10px;
-  min-height: 50vh;
-  color: white;
-  text-align: center;
+#root {
+  height: inherit;
+  width: inherit;
 }
 
-/* Flexbox */
+.examples{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
 
-.flexbox {
-  background-color: rgb(34, 34, 34);
+header {
+  flex: 1 1 auto;
+  padding: 10px;
+  text-align: center;
 }
 
 .flexbox > div {
@@ -27,22 +35,4 @@ header {
 
 .flexbox > div.right {
   justify-content: flex-end;
-}
-
-/* Inline-block items */
-
-.inlineBlock {
-  background-color: rgb(58, 58, 58);
-}
-
-.inlineBlock > div {
-  text-align: left;
-}
-
-.inlineBlock > div.right {
-  text-align: right;
-}
-
-.inlineBlock > div > div {
-  display: inline-block;
 }

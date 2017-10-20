@@ -10,10 +10,9 @@ import { Icon, NestedIcon2 } from 'src/Icons/Icon'
 const props = action => ({
   items: [
     {
-      label: 'what?',
+      label: 'Stateless Icon',
       icon: <Icon />,
-      action,
-      disabled: true
+      action
     },
     {
       label: 'Stateless Nested Icon',
@@ -71,12 +70,14 @@ class App extends Component {
     const action = this.triggerAlert.bind(this)
 
     return (
-      <div className="App">
+      <div>
         <Alerts alerts={state.alerts} />
-        <ActionExample {...props(action)} />
-        <DropdownExample {...props(action)} />
+        <div className="examples">
+          <ActionExample {...props(action)} />
+          <DropdownExample {...props(action)} />
+        </div>
       </div>
-    )
+    ).props.children
   }
 }
 
