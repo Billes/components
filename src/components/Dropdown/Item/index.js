@@ -1,21 +1,21 @@
 import React, { Component } from 'react'
 import Item from '../../Action'
 import {
-  isElemInViewportHorizontally,
-  isElemInViewportVertically
-} from '../../../utils/isElemInViewport'
+  isElemVisibleHorizontally,
+  isElemVisibleVertically
+} from '../../../utils/isElemVisible'
 
 export default class DropdownItem extends Component {
   componentDidMount() {
     const {
       element: { element: childElement },
-      props: { alignDropdown }
+      props: { alignDropdown, wrapper }
     } = this
     if (alignDropdown && childElement) {
       // Right, bottom
       const alignments = [
-        !isElemInViewportHorizontally(childElement),
-        !isElemInViewportVertically(childElement)
+        !isElemVisibleHorizontally(childElement, wrapper),
+        !isElemVisibleVertically(childElement, wrapper)
       ]
       alignDropdown(alignments)
     }
@@ -24,6 +24,7 @@ export default class DropdownItem extends Component {
   render() {
     const props = { ...this.props }
     delete props.alignDropdown
+    delete props.honour
 
     return <Item ref={el => (this.element = el)} {...props} width={'100%'} />
   }
