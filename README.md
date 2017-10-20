@@ -16,6 +16,7 @@
 ## Dropdown
 Dropdown is basically an elaborate collection of \<Action />.
 The dropdown button itself is converted to \<Action /> with a custom action that displays items. The items will convert to a list of \<Action>.
+The dropdown will expand left or up if it will render outside of viewport
 #### NOTE: items array does not take the \<Action /> (the react-component) as a valid item
 ```
  <Dropdown icon={ <ReactComponent /> } name={ 'Label' } items={ items } />
@@ -33,4 +34,5 @@ items: [
   }
 ],
 label // Label to be displayed
+wrapper = false // It can expand up or left based on a wrapper as well as a window. Wants an id of an element (no pound/hash sign)
 ```
