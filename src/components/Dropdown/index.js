@@ -49,28 +49,22 @@ class DropDown extends Component {
   }
 
   render() {
-    const { props: { items, wrapper }, state: { show } } = this
+    const { alignDropdown, hideList, props: { items, wrapper }, state } = this
     const props = { ...this.props }
     delete props['items']
 
     return (
       <div tabIndex={0} style={s.dropdown} onBlur={this.hideList}>
         <Item {...this.props} action={this.showList} />
-        {show
-            ? getList(
-                this.state,
-                items,
-              wrapper,
-                this.hideList,
-              this.alignDropdown
-              )
-            : null}
+        {state.show
+          ? getList(state.fold, items, wrapper, hideList, alignDropdown)
+          : null}
       </div>
     )
   }
 }
 
-const getList = ({ fold }, items, wrapper, hideList, alignDropdown) => {
+const getList = (fold, items, wrapper, hideList, alignDropdown) => {
   const style = {
     ...s.list,
     ...(fold.left ? s.justifyRight : {}),
