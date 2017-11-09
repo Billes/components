@@ -14,7 +14,8 @@ export default {
     height: 30,
     outline: 'none',
     transition: 'all 100ms cubic-bezier(.55,0,.55,.2)',
-    cursor: 'pointer'
+    cursor: 'pointer',
+    borderRadius: 0
   }),
   itemHover: {
     background: '#E2E2E2'
@@ -35,7 +36,9 @@ export default {
   span: {
     whiteSpace: 'nowrap',
     verticalAlign: 'middle',
-    display: 'inline-block'
+    display: 'inline-block',
+    fontFamily: 'system-ui, sans-serif',
+    textDecoration: 'none'
   },
   verticalAlignmentHelper: {
     display: 'inline-block',
