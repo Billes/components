@@ -95,9 +95,9 @@ export default class Item extends Component {
         onClick={
           action && !disabled
             ? e => {
-              e.preventDefault()
-              action()
-            }
+                e.preventDefault()
+                action()
+              }
             : null
         }
         style={buttonStyle}
