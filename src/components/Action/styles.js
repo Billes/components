@@ -20,7 +20,8 @@ export default {
     background: '#E2E2E2'
   },
   disabled: {
-    opacity: '0.4'
+    opacity: '0.4',
+    cursor: 'default'
   },
   img: {
     verticalAlign: 'middle',
