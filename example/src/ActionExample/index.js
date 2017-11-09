@@ -24,6 +24,10 @@ const ActionExample = ({ items }) => (
     <div>
       <Action {...withLink} />
     </div>
+    <h2>But if action exists, prevent link</h2>
+    <div>
+      <Action {...{ ...items[0], ...withLink }} />
+    </div>
   </header>
 )
 

@@ -92,7 +92,14 @@ export default class Item extends Component {
       <button
         ref={el => (this.element = el)}
         href={link}
-        onClick={action && !disabled ? () => action() : null}
+        onClick={
+          action && !disabled
+            ? e => {
+              e.preventDefault()
+              action()
+            }
+            : null
+        }
         style={buttonStyle}
         onMouseEnter={this.hovered}
         onMouseLeave={this.unhovered}
