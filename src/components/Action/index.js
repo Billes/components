@@ -12,7 +12,7 @@ const getIcon = icon => {
       }
     }
   }
-  return <span style={s.verticalAlignmentHelper} />
+  return null
 }
 
 const findUnderlyingInChildrenRec = ([child, ...children]) => {
@@ -97,12 +97,13 @@ export default class Item extends Component {
         onMouseEnter={this.hovered}
         onMouseLeave={this.unhovered}
       >
+        <span style={s.verticalAlignmentHelper} />
         {getIcon(icon)}
         <span style={s.span}>{getText(label, name)}</span>
       </button>
     )
 
-    if (link) return <a {...item.props}> </a>
+    if (link) return <a {...item.props} />
 
     return item
   }
