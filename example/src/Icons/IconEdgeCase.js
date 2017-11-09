@@ -1,6 +1,10 @@
 import React from 'react'
 
-export const IconEdgeCase = ({ children, viewBox = '0 2 28 28', disabled = false }) => {
+export const IconEdgeCase = ({
+  children,
+  viewBox = '0 2 28 28',
+  disabled = false
+}) => {
   return (
     <svg
       fill={disabled ? '#eee' : 'rgba(0,0,0,0.57)'}

@@ -12,7 +12,7 @@ const getIcon = icon => {
       }
     }
   }
-  return <span style={s.verticalAlignmentHelper} />
+  return null
 }
 
 const findUnderlyingInChildrenRec = ([child, ...children]) => {
@@ -92,17 +92,25 @@ export default class Item extends Component {
       <button
         ref={el => (this.element = el)}
         href={link}
-        onClick={action && !disabled ? () => action() : null}
+        onClick={
+          action && !disabled
+            ? e => {
+              e.preventDefault()
+              action()
+            }
+            : null
+        }
         style={buttonStyle}
         onMouseEnter={this.hovered}
         onMouseLeave={this.unhovered}
       >
+        <span style={s.verticalAlignmentHelper} />
         {getIcon(icon)}
         <span style={s.span}>{getText(label, name)}</span>
       </button>
     )
 
-    if (link) return <a {...item.props}> </a>
+    if (link) return <a {...item.props} />
 
     return item
   }
