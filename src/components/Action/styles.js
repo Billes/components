@@ -20,23 +20,26 @@ export default {
   disabled: {
     cursor: 'default'
   },
-  img: {
+  img: (width, height) => ({
     verticalAlign: 'middle',
     display: 'inline-block',
     whiteSpace: 'nowrap',
     fill: 'currentColor',
     color: 'inherit !important',
-    marginRight: 6,
-    height: 24,
-    width: 24
-  },
-  span: {
+    height: height,
+    width: width
+  }),
+  span: (iconWidth, hasSibling, flip) => ({
+    textAlign: 'left',
     whiteSpace: 'nowrap',
     verticalAlign: 'middle',
     display: 'inline-block',
+    paddingLeft: hasSibling && !flip ? 6 : 0,
+    paddingRight: hasSibling && flip ? 6 : 0,
+    width: `calc(100% - ${hasSibling ? iconWidth : 0}px)`,
     fontFamily: 'system-ui, sans-serif',
     textDecoration: 'none'
-  },
+  }),
   verticalAlignmentHelper: {
     display: 'inline-block',
     height: '100%',

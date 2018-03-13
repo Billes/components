@@ -2,14 +2,24 @@ import React, { Component, createElement } from 'react'
 import darkenColor from '../../utils/darkenColor.js'
 import s from './styles'
 
-const getIcon = icon => {
+const stdIconSide = 24
+
+const Icon = ({ icon, width, height }) => {
+  const style = s.img(width, height)
   if (icon) {
     if (typeof icon === 'string' || icon instanceof String)
-      return <img style={s.img} src={icon} alt={''} />
+      return <img style={style} src={icon} alt={''} />
     else {
       const image = findUnderlyingImage(icon)
       if (image) {
-        return createElement(image.type, { style: s.img }, image.props.children)
+        return createElement(
+          image.type,
+          {
+            style,
+            ...(image.props.viewBox ? { viewBox: image.props.viewBox } : {})
+          },
+          image.props.children
+        )
       }
     }
   }
@@ -80,7 +90,8 @@ export default class Item extends Component {
       name,
       label,
       disabled = false,
-      width = 'auto'
+      width = 'auto',
+      flip = false,
       style = {}
     } = this.props
 
@@ -94,6 +105,17 @@ export default class Item extends Component {
       ...(this.state.hover && !disabled ? { background: darkenColor(rawButtonStyle.background, -25) } : {} ),
       ...(disabled ? { ...s.disabled, background: darkenColor(rawButtonStyle.background, -120) } : {})
     }
+
+    const iconComponent = icon ? icon.component || icon : null
+    const iconWidth = icon && icon.width ? icon.width : stdIconSide
+    const iconHeight = style.height < 24 ? style.height : stdIconSide
+
+    const content = [
+      <Icon key={'icon'} icon={iconComponent} width={iconWidth} height={iconHeight} />,
+      <span key={'text'} style={s.span(iconWidth, icon, flip)}>
+        {getText(label, name)}
+      </span>
+    ]
 
     const item = (
       <button
@@ -112,8 +134,7 @@ export default class Item extends Component {
         onMouseLeave={this.unhovered}
       >
         <span style={s.verticalAlignmentHelper} />
-        {getIcon(icon)}
-        <span style={s.span}>{getText(label, name)}</span>
+        {flip ? content.reverse() : content}
       </button>
     )
 
