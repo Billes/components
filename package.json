@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "scripts": {
     "preexample": "[ -d \"./node_modules\" ] || yarn install",
-    "example": "webpack-dev-server --open",
+    "example": "webpack-dev-server --open --host 0.0.0.0",
     "start": "yarn example",
     "build": "babel src/ -d lib/",
     "lint": "eslint src --fix",
@@ -33,6 +33,7 @@
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
+    "babel-plugin-transform-object-entries": "^1.0.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
@@ -64,7 +65,8 @@
         {
           "useBuiltIns": true
         }
-      ]
+      ],
+      "transform-object-entries"
     ]
   }
 }

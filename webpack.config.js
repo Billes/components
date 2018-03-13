@@ -21,7 +21,10 @@ module.exports = {
       {
         test: /(\.jsx|\.js)$/,
         loader: require.resolve('babel-loader'),
-        exclude: /(node_modules)/
+        exclude: /(node_modules)/,
+        options: {
+          plugins: ["transform-object-entries", "transform-object-rest-spread"]
+        }
       },
       {
         test: /(\.css)$/,
