@@ -2,7 +2,7 @@ import React from 'react'
 
 export const IconEdgeCase = ({
   children,
-  viewBox = '0 2 28 28',
+  viewBox = '2 2 20 20',
   disabled = false
 }) => {
   return (

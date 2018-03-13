@@ -5,14 +5,16 @@ import Alerts from 'src/Alerts'
 import ActionExample from 'src/ActionExample'
 import DropdownExample from 'src/DropdownExample'
 import { NestedIconEdgeCase } from 'src/Icons/IconEdgeCase'
-import { Icon, NestedIcon2 } from 'src/Icons/Icon'
+import { Icon, NestedIcon2, NpmIcon } from 'src/Icons/Icon'
+import base64Img from 'src/Icons/base64Img'
 
 const props = action => ({
   items: [
     {
       label: 'Stateless Icon',
       icon: <Icon />,
-      action
+      action,
+      flip: true
     },
     {
       label: 'Stateless Nested Icon',
@@ -23,6 +25,18 @@ const props = action => ({
       label: 'Stateless Nested Edgecase',
       icon: <NestedIconEdgeCase />,
       action
+    },
+    {
+      label: 'Npm Icon',
+      icon: { component: <NpmIcon />, width: 72 },
+      action,
+      flip: true
+    },
+    {
+      label: 'React Icon',
+      icon: base64Img,
+      action,
+      style: { background: '#ff0000', height: 15 }
     }
   ],
   label: 'Dropdown'
