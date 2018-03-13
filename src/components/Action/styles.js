@@ -17,11 +17,7 @@ export default {
     cursor: 'pointer',
     borderRadius: 0
   }),
-  itemHover: {
-    background: '#E2E2E2'
-  },
   disabled: {
-    opacity: '0.4',
     cursor: 'default'
   },
   img: {

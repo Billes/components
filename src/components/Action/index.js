@@ -1,4 +1,5 @@
 import React, { Component, createElement } from 'react'
+import darkenColor from '../../utils/darkenColor.js'
 import s from './styles'
 
 const getIcon = icon => {
@@ -80,12 +81,18 @@ export default class Item extends Component {
       label,
       disabled = false,
       width = 'auto'
+      style = {}
     } = this.props
 
-    const buttonStyle = {
+    const rawButtonStyle = {
       ...s.item(width),
-      ...(this.state.hover && !disabled ? s.itemHover : {}),
-      ...(disabled ? s.disabled : {})
+      ...style
+    }
+
+    const buttonStyle = {
+      ...rawButtonStyle,
+      ...(this.state.hover && !disabled ? { background: darkenColor(rawButtonStyle.background, -25) } : {} ),
+      ...(disabled ? { ...s.disabled, background: darkenColor(rawButtonStyle.background, -120) } : {})
     }
 
     const item = (
