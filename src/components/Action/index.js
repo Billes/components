@@ -103,7 +103,7 @@ export default class Item extends Component {
     const buttonStyle = {
       ...rawButtonStyle,
       ...(this.state.hover && !disabled ? { background: darkenColor(rawButtonStyle.background, -25) } : {} ),
-      ...(disabled ? { ...s.disabled, background: darkenColor(rawButtonStyle.background, -120) } : {})
+      ...(disabled ? { ...s.disabled, color: darkenColor(rawButtonStyle.color, 90) } : {})
     }
 
     const iconComponent = icon ? icon.component || icon : null

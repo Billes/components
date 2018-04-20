@@ -2,7 +2,7 @@ export default {
   item: (width = 'auto') => ({
     boxSizing: 'border-box',
     background: '#fff',
-    color: 'rgba(0,0,0,0.57)',
+    color: '#6e6e6e',
     border: 0,
     fontSize: 12,
     fontWeight: '400',
