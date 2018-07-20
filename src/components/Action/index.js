@@ -47,8 +47,9 @@ const findUnderlyingImage = (icon = {}) => {
     return findUnderlyingImage(icon.type(icon.props)) // Calling types instantiates it so we can look for more
   } else if (typeof icon.type !== 'string' && icon.type.prototype.render) {
     console.error(
-      `@Billes/components: Cannot read underlying implementation of ${icon.type
-        .name} because it is an instance of "React.Component". Please use stateless components instead.`
+      `@Billes/components: Cannot read underlying implementation of ${
+        icon.type.name
+      } because it is an instance of "React.Component". Please use stateless components instead.`
     )
   }
 
@@ -92,6 +93,7 @@ export default class Item extends Component {
       disabled = false,
       width = 'auto',
       flip = false,
+      target = '_self',
       style = {}
     } = this.props
 
@@ -102,8 +104,12 @@ export default class Item extends Component {
 
     const buttonStyle = {
       ...rawButtonStyle,
-      ...(this.state.hover && !disabled ? { background: darkenColor(rawButtonStyle.background, -25) } : {} ),
-      ...(disabled ? { ...s.disabled, color: darkenColor(rawButtonStyle.color, 90) } : {})
+      ...(this.state.hover && !disabled
+        ? { background: darkenColor(rawButtonStyle.background, -25) }
+        : {}),
+      ...(disabled
+        ? { ...s.disabled, color: darkenColor(rawButtonStyle.color, 90) }
+        : {})
     }
 
     const iconComponent = icon ? icon.component || icon : null
@@ -111,7 +117,12 @@ export default class Item extends Component {
     const iconHeight = style.height < 24 ? style.height : stdIconSide
 
     const content = [
-      <Icon key={'icon'} icon={iconComponent} width={iconWidth} height={iconHeight} />,
+      <Icon
+        key={'icon'}
+        icon={iconComponent}
+        width={iconWidth}
+        height={iconHeight}
+      />,
       <span key={'text'} style={s.span(iconWidth, icon, flip)}>
         {getText(label, name)}
       </span>
@@ -121,6 +132,7 @@ export default class Item extends Component {
       <button
         ref={el => (this.element = el)}
         href={link}
+        target={target}
         onClick={
           action && !disabled
             ? e => {
@@ -131,8 +143,7 @@ export default class Item extends Component {
         }
         style={buttonStyle}
         onMouseEnter={this.hovered}
-        onMouseLeave={this.unhovered}
-      >
+        onMouseLeave={this.unhovered}>
         <span style={s.verticalAlignmentHelper} />
         {flip ? content.reverse() : content}
       </button>

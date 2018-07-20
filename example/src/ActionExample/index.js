@@ -11,8 +11,7 @@ const withLink = {
 const ActionExample = ({ items }) => (
   <header
     className="flexbox"
-    style={{ backgroundColor: 'rgb(34, 34, 34)', color: '#fff' }}
-  >
+    style={{ backgroundColor: 'rgb(34, 34, 34)', color: '#fff' }}>
     <h1>Component &quot;Action&quot;</h1>
     <h2>Multiple elements</h2>
     <div>{items.map(actionView)}</div>
@@ -27,6 +26,10 @@ const ActionExample = ({ items }) => (
     <h2>But if action exists, prevent link</h2>
     <div>
       <Action {...{ ...items[0], ...withLink }} />
+    </div>
+    <h2>Open link in _blank target</h2>
+    <div>
+      <Action {...withLink} target={'_blank'} />
     </div>
   </header>
 )
