@@ -1,4 +1,8 @@
 # Billes Components
+## Install
+```
+yarn add @billes/components
+```
 ## Action
 ```
  <Action icon={ <ReactComponent /> } label={ 'Some label' } action={() => { console.log('hello world')}}>
