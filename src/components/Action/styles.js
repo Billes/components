@@ -37,7 +37,6 @@ export default {
         ? iconWidth * 2
         : hasSibling || chevron ? iconWidth : 0
 
-    console.log(width)
     const paddingLeft =
       hasSibling && chevron
         ? 6
