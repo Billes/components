@@ -1,5 +1,5 @@
 import React, { Component, createElement } from 'react'
-import darkenColor from '../../utils/darkenColor.js'
+import adjustColor from '../../utils/adjustColor.js'
 import s from './styles'
 
 const stdIconSide = 24
@@ -47,9 +47,8 @@ const findUnderlyingImage = (icon = {}) => {
     return findUnderlyingImage(icon.type(icon.props)) // Calling types instantiates it so we can look for more
   } else if (typeof icon.type !== 'string' && icon.type.prototype.render) {
     console.error(
-      `@Billes/components: Cannot read underlying implementation of ${
-        icon.type.name
-      } because it is an instance of "React.Component". Please use stateless components instead.`
+      `@Billes/components: Cannot read underlying implementation of ${icon.type
+        .name} because it is an instance of "React.Component". Please use stateless components instead.`
     )
   }
 
@@ -105,10 +104,14 @@ export default class Item extends Component {
     const buttonStyle = {
       ...rawButtonStyle,
       ...(this.state.hover && !disabled
-        ? { background: darkenColor(rawButtonStyle.background, -25) }
+        ? { background: adjustColor(-0.2, rawButtonStyle.background) }
         : {}),
       ...(disabled
-        ? { ...s.disabled, color: darkenColor(rawButtonStyle.color, 90) }
+        ? {
+            ...s.disabled,
+            background: adjustColor(0.4, rawButtonStyle.background),
+            color: adjustColor(0.65, rawButtonStyle.color)
+          }
         : {})
     }
 
@@ -136,14 +139,15 @@ export default class Item extends Component {
         onClick={
           action && !disabled
             ? e => {
-                e.preventDefault()
-                action()
-              }
+              e.preventDefault()
+              action()
+            }
             : null
         }
         style={buttonStyle}
         onMouseEnter={this.hovered}
-        onMouseLeave={this.unhovered}>
+        onMouseLeave={this.unhovered}
+      >
         <span style={s.verticalAlignmentHelper} />
         {flip ? content.reverse() : content}
       </button>
