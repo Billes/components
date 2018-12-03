@@ -1,5 +1,6 @@
 import React, { Component, createElement } from 'react'
 import adjustColor from '../../utils/adjustColor.js'
+import Chevron from './Chevron'
 import s from './styles'
 
 const stdIconSide = 24
@@ -93,11 +94,12 @@ export default class Item extends Component {
       width = 'auto',
       flip = false,
       target = '_self',
-      style = {}
+      style = {},
+      chevron = false
     } = this.props
 
     const rawButtonStyle = {
-      ...s.item(width),
+      ...s.item(width, chevron, flip),
       ...style
     }
 
@@ -108,10 +110,10 @@ export default class Item extends Component {
         : {}),
       ...(disabled
         ? {
-            ...s.disabled,
-            background: adjustColor(0.4, rawButtonStyle.background),
-            color: adjustColor(0.65, rawButtonStyle.color)
-          }
+          ...s.disabled,
+          background: adjustColor(0.4, rawButtonStyle.background),
+          color: adjustColor(0.65, rawButtonStyle.color)
+        }
         : {})
     }
 
@@ -126,10 +128,19 @@ export default class Item extends Component {
         width={iconWidth}
         height={iconHeight}
       />,
-      <span key={'text'} style={s.span(iconWidth, icon, flip)}>
+      <span key={'text'} style={s.span(iconWidth, icon, flip, chevron)}>
         {getText(label, name)}
       </span>
     ]
+    if (chevron)
+      content.push(
+        <Icon
+          key={'icon'}
+          icon={<Chevron />}
+          width={iconWidth}
+          height={iconHeight}
+        />
+      )
 
     const item = (
       <button
@@ -139,9 +150,9 @@ export default class Item extends Component {
         onClick={
           action && !disabled
             ? e => {
-              e.preventDefault()
-              action()
-            }
+                e.preventDefault()
+                action()
+              }
             : null
         }
         style={buttonStyle}

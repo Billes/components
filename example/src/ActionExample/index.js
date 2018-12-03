@@ -16,12 +16,13 @@ const styled = [
   },
   {
     label: 'H: auto, green',
-    icon: <Icon />,
+    chevron: true,
     style: { background: '#4fff65', color: '#000', height: 'auto' }
   },
   {
     label: 'H: 100%, yellow',
-    icon: <Icon />,
+    chevron: true,
+    flip: true,
     style: { background: '#fbff00', color: '#000', height: '100%' }
   },
   {
