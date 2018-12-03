@@ -1,6 +1,6 @@
 {
   "name": "@billes/components",
-  "version": "2.0.2",
+  "version": "2.1.0",
   "description": "Components in React",
   "main": "lib/index.js",
   "scripts": {
@@ -16,7 +16,10 @@
     "type": "git",
     "url": "git+https://github.com/Billes/components.git"
   },
-  "keywords": ["react", "components"],
+  "keywords": [
+    "react",
+    "components"
+  ],
   "author": "Andrée Björkgård <andree.bjorkgard@billes.se>",
   "license": "MIT",
   "bugs": {
@@ -51,7 +54,11 @@
     "webpack-dev-server": "^2.9.2"
   },
   "babel": {
-    "presets": ["env", "react", "flow"],
+    "presets": [
+      "env",
+      "react",
+      "flow"
+    ],
     "plugins": [
       [
         "transform-object-rest-spread",
