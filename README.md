@@ -48,7 +48,8 @@ items: [
   }
 ],
 label // Label to be displayed
-style = {} // Custom styling of action. caveats: background must be hex
+style = {} // Custom styling of action
 flip = false // puts the icon on the right side with label still aligned to the left 
 wrapper = false // It can expand up or left based on a wrapper as well as a window. Wants an id of an element (no pound/hash sign)
+chevron = false // if you want to display chevron or not 
 ```
