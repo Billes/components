@@ -149,7 +149,13 @@ export default class Item extends Component {
       </button>
     )
 
-    if (link) return <a {...item.props} />
+    if (link)
+      return (
+        <a
+          {...item.props}
+          onClick={disabled ? e => e.preventDefault() : null}
+        />
+      )
 
     return item
   }
