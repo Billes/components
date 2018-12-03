@@ -27,16 +27,15 @@ const props = action => ({
       action
     },
     {
-      label: 'Npm Icon',
+      label: 'Flipped & resized',
       icon: { component: <NpmIcon />, width: 72 },
       action,
       flip: true
     },
     {
-      label: 'React Icon',
+      label: 'Base64 Icon',
       icon: base64Img,
-      action,
-      style: { background: '#ff0000', height: 15 }
+      action
     }
   ],
   label: 'Dropdown'
